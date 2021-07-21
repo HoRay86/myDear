@@ -1,0 +1,70 @@
+﻿body {
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)), url(img/bg.jpg);
+    background-size: cover;
+    /*將背景圖片的大小放大至容器的大小並填滿*/
+    background-position: center center;
+    /*背景圖片水平位置與垂直位置均置中對齊*/
+    background-repeat: no-repeat;
+    /*背景圖片不要重覆顯示（僅顯示一次）*/
+}
+
+.wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#backstage {
+    width: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8PX;
+    background-color: rgba(41, 86, 128, 0.644);
+    color: rgb(255, 255, 255);
+}
+
+#backstage img {
+    width: 100PX;
+}
+
+.login i {
+    font-size: 1.6rem;
+}
+
+input[type=text],
+select {
+    padding: 8px 15PX;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password],
+select {
+    padding: 8px 15PX;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=checkbox] {
+    text-align: left;
+}
+
+input[type=submit] {
+    background-color: rgb(255, 246, 177);
+    color: black;
+    padding: 5px 13px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

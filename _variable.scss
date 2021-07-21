@@ -1,0 +1,12 @@
+@mixin navbar_a {
+    font-size: 1.2em;
+}
+
+@mixin navbar_aHover {
+    font-weight: 700;
+    transform: 0.2s;
+}
+
+@mixin list {
+    list-style: none;
+}

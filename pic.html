@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="img/titlePic.ico" rel="shortcut icon" />
+
+    <title>How Are You ? </title>
+    <style>
+        .item {
+            position: relative;
+        }
+        
+        .txt {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        
+        .txt h2 {
+            color: blanchedalmond;
+        }
+        
+        .txt p {
+            color: seashell;
+        }
+        
+        .txt a {
+            text-decoration: none;
+        }
+        
+        .txt a:hover h2 {
+            text-decoration: none;
+            color: #FF0;
+        }
+        
+        .txt:hover {
+            opacity: 1;
+        }
+        
+        .bg-cover {
+            background-size: cover;
+            background-position: center center;
+        }
+        /* 手機畫面以上讓畫面呈滿版  */
+        
+        @media (min-width:1024PX) {
+            .item1 {
+                height: 100vh;
+            }
+            /* 除了第一個item其他的item 跟 pic 設定50vh */
+             :not(.item:first-of-type).item,
+            .pic img {
+                height: 50vh;
+            }
+        }
+        /* 手機平板畫面直接呈現出文字 */
+        
+        @media (max-width:1024PX) {
+            .txt {
+                opacity: 1;
+            }
+            .txt h2 {
+                font-size: 20PX;
+            }
+            .txt p {
+                font-size: 15PX;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="row g-0">
+            <div class="item item1 col-lg-6">
+                <div class="pic h-100">
+                    <img src="https://picsum.photos/500/500?random=11 " class="h-100 w-100" alt="img">
+                </div>
+                <div class="txt ">
+                    <a href="公關組.html">
+                        <h2>
+                            畢業快樂 <br> Spread your wings and fly!
+                        </h2>
+                        <p>
+                            「珍惜你所有的經歷，把他們變成專屬閱歷」
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="item col-lg-6 ">
+                <div class="row g-0">
+                    <div class="item col-6 ">
+                        <div class="pic">
+                            <img src="https://picsum.photos/500/500?random=12 " class="w-100" alt="img">
+                        </div>
+                        <div class="txt ">
+                            <a href="book.html">
+                                <h2>
+                                    遺憾，<br> 更讓人念念不忘
+                                </h2>
+                                <p>
+                                    那疫年，你們一起參加的透明色畢典
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item col-6 ">
+                        <div class="pic ">
+                            <img src="https://picsum.photos/500/500?random=13 " class=" w-100" alt="img">
+                        </div>
+                        <div class="txt ">
+                            <a href="還沒想到內容.html">
+                                <h2>
+                                    有些路 <br> 只能一個人走!
+                                </h2>
+                                <p>
+
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item col-6 ">
+                        <div class="pic">
+                            <img src="https://picsum.photos/500/500?random=14 " class=" w-100" alt="img">
+                        </div>
+                        <div class="txt ">
+                            <a href="timeline.html">
+                                <h2>
+                                    歲月無限好 <br> 有你會更好!
+                                </h2>
+                                <p>
+
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item col-6 ">
+                        <div class="pic">
+                            <img src="https://picsum.photos/500/500?random=1 " class=" w-100" alt="img">
+                        </div>
+                        <div class="txt ">
+                            <a href="無畜可逃.html">
+                                <h2>
+                                    無畜可逃 <br>
+                                </h2>
+                                <p>
+                                    新鮮的肝，社會在等你 ^ ^
+                                    <!-- 一個禮拜有八天想放假 -->
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

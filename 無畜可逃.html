@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/style.css">
+
+    <link href="img/titlePic.ico" rel="shortcut icon" />
+    <title> New Graduate 新鮮的肝，社會需要你啊</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="container-fluid ">
+            <a href="pic.html"><img src="img/apple-removebg.png" class="w-25" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="timeline.html">時光飛逝</a>
+                    </li>
+                    <li class="nav-item mx-2 dropdown">
+                        <a class="nav-link dropdown-toggle" href="無畜可逃.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  社畜人生
+                </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="無畜可逃.html">無畜可逃</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="還沒想到內容.html">還沒想到</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="book.html">畢業紀念冊</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="公關組.html">致,屁果s</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="workWrap mb-5">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://picsum.photos/1200/400?random=1" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://picsum.photos/1200/400?random=2" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://picsum.photos/1200/400?random=3" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+    </div>
+
+
+    <div class="container workList">
+
+        <div class="row">
+
+            <div class="col-3">
+                <div class="menuList list-group">
+                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+              The current link item
+            </a>
+                    <a href="無畜可逃.html" class="list-group-item list-group-item-action">幹話日常 笑一下</a>
+                    <input type="button" class="list-group-item list-group-item-action" onclick="positiveImg()" value="幹話日常 笑一下">
+                    <input type="button" class="list-group-item list-group-item-action" value="每天須點正能量">
+                    <input type="button" class="list-group-item list-group-item-action" onclick="info()" value="你 還有梗嗎?">
+                    <!-- <span class="list-group-item list-group-item-action" onclick="">幹話日常 笑一下</span>
+                    <span class="list-group-item list-group-item-action" onclick="">每天須點正能量</span>
+                    <span class="list-group-item list-group-item-action" onclick="info()">你 還有梗嗎?</span> -->
+
+                </div>
+            </div>
+            <!-- 選單 希望能做AJAX換頁 -->
+            <div class=" col-9 mb-5 text-center ajaxpage">
+                <h4>「歡迎來到這個真實的世界，他可能糟透了，但我相信你還是會愛上他的。」</h4>
+                <p class="mb-5">Welcome to the real world. It sucks. You’re gonna love it.</p>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3  g-3 list">
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=11" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=13" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=14" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=12" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=15" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=16" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=17" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=18" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=19" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=10" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=20" class="w-100" alt=""></div>
+                    <div class="col-md workImg"><img src="https://picsum.photos/600/400?random=21" class="w-100" alt=""></div>
+                    <!-- 想用輪播圖片 -->
+                    <div class="col-md workImg">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://picsum.photos/600/400?random=31" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://picsum.photos/600/400?random=41" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://picsum.photos/600/400?random=51" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                                </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="joke.js"></script>
+    <!-- <script src="positive.js"></script> -->
+    <!-- <script>
+        function getData() {
+            //XMLHttpRequest物件 專門用來和伺服器做連線
+            let req = new XMLHttpRequest();
+            // req先用open方法做"設定" ("連線方法:get取得" ,"連線的網址")
+            req.open("get", "http://127.0.0.1:5500/%E4%BD%A0%E9%82%84%E6%9C%89%E6%A2%97%E5%97%8E.html");
+            //load事件 偵測連線狀態-結束
+            req.onload = function() {
+                //連線完成 做事情
+                let content = document.querySelector(".ajaxpage");
+                content.innerHTML = this.responseText;
+            };
+
+            req.send(); //送出"連線"
+        }
+    </script> -->
+</body>
+
+</html>

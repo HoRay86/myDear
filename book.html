@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+    <!-- jQuery -->
+
+    <script type="text/javascript" src="booklet-master/src/jquery-2.1.0.min.js"></script>
+    <!-- jQuery UI (optional) -->
+    <script type="text/javascript" src="booklet-master/src/jquery-ui-1.10.4.min.js"></script>
+    <!-- Booklet -->
+    <script type="text/javascript" src="booklet-master/src/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="booklet-master/src/jquery.booklet.latest.min.js"></script>
+
+    <link rel="stylesheet" href="booklet-master/src/jquery.booklet.latest.css" media="screen,projection,tv">
+    <!-- 文字動畫 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <title>Hello, world!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            background: #eba426;
+            color: #444;
+            font-size: 12px;
+            color: #333;
+            font-family: 'Oswald', sans-serif;
+        }
+        /* 手冊 陰影和圓形邊界 */
+        
+        .booklet {
+            width: 420px;
+            height: 490px;
+            position: relative;
+            padding: 10PX;
+            left: 12PX;
+            top: -3PX;
+            margin: 0 auto 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+        
+        .booklet .b-wrap-left {
+            background: #fff url(img/book/item/left_bg.jpg) no-repeat top right;
+            background-size: contain;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        
+        .booklet .b-wrap-right {
+            background: #efefef url(img/book/item/right_bg.jpg) no-repeat top right;
+            background-size: contain;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        /* 頁碼樣式化 & 頂部邊框*/
+        
+        .booklet .b-counter {
+            bottom: 10px;
+            position: absolute;
+            display: block;
+            width: 95%;
+            height: 20px;
+            border-top: 1px solid #ddd;
+            color: #222;
+            text-align: center;
+            font-size: 12px;
+            padding: 5px 0 0;
+            background: transparent;
+            -moz-box-shadow: 0px -1px 1px #fff;
+            -webkit-box-shadow: 0px -1px 1px #fff;
+            box-shadow: 0px -1px 1px #fff;
+            opacity: 0.8;
+        }
+        
+        .book_wrapper {
+            margin: auto;
+            box-sizing: border-box;
+            padding-top: 53px;
+            bottom: 0;
+            width: 900px;
+            height: 576px;
+            position: relative;
+            background: transparent url(img/book/item/bg.png) no-repeat 17px 27px;
+            background-size: contain;
+        }
+        
+        .book_wrapper .page {
+            padding: 10PX 18PX;
+        }
+        
+        .book_wrapper .txt {
+            padding-left: 5PX;
+        }
+        
+        .book_wrapper h1 {
+            color: orange;
+            font-size: 24px;
+            background: transparent url(img/book/item/h1.png) no-repeat bottom left;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: normal;
+            margin: 5PX 0;
+        }
+        
+        .book_wrapper p {
+            font-size: 1.1em;
+        }
+        
+        .book_wrapper a.article,
+        .book_wrapper a.demo {
+            background: transparent url(img/book/item/circle.png) no-repeat 50% 0px;
+            display: block;
+            width: 155px;
+            height: 41px;
+            text-decoration: none;
+            outline: none;
+            font-size: 16px;
+            color: #555;
+            float: left;
+            line-height: 41px;
+            padding-left: 60px;
+            margin-top: 15PX;
+        }
+        
+        .book_wrapper a.demo {
+            margin-left: 50px;
+        }
+        
+        .book_wrapper a.article:hover,
+        .book_wrapper a.demo:hover {
+            background-position: 50% -41px;
+            color: #13386a;
+        }
+        
+        .book_wrapper .pic {
+            margin: 0px 0px 15px 12px;
+        }
+        
+        .book_wrapper img {
+            object-fit: cover;
+            max-height: 360PX;
+            max-width: 320px;
+            padding: 4px;
+            border: 1px solid #ddd;
+            -moz-box-shadow: 1px 1px 1px #fff;
+            -webkit-box-shadow: 1px 1px 1px #fff;
+            box-shadow: 1px 1px 1px #fff;
+        }
+        
+        .booklet .b-wrap-right img {
+            border: 1px solid #f5f1cc;
+        }
+        
+        a#next_page_button,
+        a#prev_page_button {
+            display: none;
+            position: absolute;
+            width: 41px;
+            height: 40px;
+            object-fit: contain;
+            cursor: pointer;
+            margin-top: -20px;
+            top: 50%;
+            background: transparent url(img/book/item/buttons.png) no-repeat 0px -40px;
+        }
+        
+        a#prev_page_button {
+            left: -30px;
+        }
+        
+        a#next_page_button {
+            right: -50px;
+            background-position: -41px -40px;
+        }
+        
+        a#next_page_button:hover {
+            background-position: -41px 0px;
+        }
+        
+        a#prev_page_button:hover {
+            background-position: 0px 0px;
+        }
+        
+        .container {
+            position: relative;
+        }
+        
+        .logoHome {
+            width: 50PX;
+            position: absolute;
+            top: 30PX;
+            right: 30PX;
+            /* float: right; */
+        }
+        
+        .logoHome img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <a class="logoHome" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            <img src="img/apple-removebg.png" alt="logo">
+        </a>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+                </div>
+                <div class="dropdown mt-3">
+
+                    <ul>
+                        <li><a class="dropdown-item" href="pic.html">畢業快樂</a></li>
+                        <li><a class="dropdown-item" href="無畜可逃.html">無畜可逃</a></li>
+                        <li><a class="dropdown-item" href="timeline.html">時光飛逝</a></li>
+                        <li><a class="dropdown-item" href="公關組.html">致，屁果s</a></li>
+                        <li><a class="dropdown-item" href="book.html">畢業紀念冊</a></li>
+                        <li><a class="dropdown-item" href="還沒想到內容.html">還沒想到</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="book_wrapper">
+            <a id="next_page_button"> </a>
+            <a id="prev_page_button"></a>
+            <div id="mybook" style="display:none;">
+                <div class="b-load">
+                    <div class="page">
+                        <div class="pic">
+                            <img src="img/book/1.jpg" alt="" />
+                        </div>
+                        <div class="txt">
+                            <h1>下台一鞠躬</h1>
+                            <p>青青校樹，萋萋庭草，又到了道別離的季節。 宜蘭大學這個舞台，你們也謝幕了。
+                            </p>
+                            <p>
+                                想收集一些一起大笑、一起瘋狂，我很喜歡的珍貴回憶，<small>是我很喜歡的，你不喜歡也沒辦法~ </small>
+                                <br> 密切相處只有短短半年，所有相處時間零零碎碎也就那些，你們的四年大學生活，這些只不過冰山一角
+                                <br> 怕你們忘記 所以把回憶收藏 做一本
+                                <br> 未來想到時也能一翻再翻的畢業紀念冊。
+
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="page">
+                        <div class="pic">
+                            <img src="img/book/1.jpg" alt="" />
+                        </div>
+                        <div class="txt">
+                            <h1>Animated Portfolio Gallery</h1>
+                            <p>Today we will create an animated portfolio gallery with jQuery. The gallery will contain a scroller for thumbnails and a content area where we will display details about the portfolio item. The image can be enlarged by clicking
+                                on it, making it appear as an overlay.</p>
+                            <a href="" target="_blank" class="article">ARTICLE</a>
+                            <a href="" class="demo">DEMO</a>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <div class="pic">
+                            <img src="https://picsum.photos/600/400?random=14" alt="" />
+                        </div>
+                        <div class="txt">
+                            <h1>Animated Portfolio Gallery</h1>
+                            <p>Today we will create an animated portfolio gallery with jQuery. The gallery will contain a scroller for thumbnails and a content area where we will display details about the portfolio item. The image can be enlarged by clicking
+                                on it, making it appear as an overlay.</p>
+                            <a href="" target="_blank" class="article">ARTICLE</a>
+                            <a href="" class="demo">DEMO</a>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <div class="pic">
+                            <img src="img/book/graduate2.jpg" alt="" />
+                        </div>
+                        <div class="txt">
+                            <h1>Animated Portfolio Gallery</h1>
+                            <p>Today we will create an animated portfolio gallery with jQuery. The gallery will contain a scroller for thumbnails and a content area where we will display details about the portfolio item. The image can be enlarged by clicking
+                                on it, making it appear as an overlay.</p>
+                            <a href="" target="_blank" class="article">ARTICLE</a>
+                            <a href="" class="demo">DEMO</a>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <div class="pic">
+                            <img src="https://picsum.photos/600/400?random=15" alt="" />
+                        </div>
+                        <div class="txt">
+                            <h1>Animated Portfolio Gallery</h1>
+                            <p>Today we will create an animated portfolio gallery with jQuery. The gallery will contain a scroller for thumbnails and a content area where we will display details about the portfolio item. The image can be enlarged by clicking
+                                on it, making it appear as an overlay.</p>
+                            <a href="" target="_blank" class="article">ARTICLE</a>
+                            <a href="" class="demo">DEMO</a>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <div class="pic">
+                            <img src="https://picsum.photos/600/400?random=16" alt="" />
+                        </div>
+                        <div class="txt">
+                            <h1>Compact News Previewer</h1>
+                            <p>青青校樹，萋萋庭草，又到了道別離的季節。 想收集這些年一起大笑、一起瘋狂的珍貴回憶，作一本畢業紀念冊， 然而傳統畢業紀念冊總是厚厚一本，與自己有關的回憶只有少少幾頁，好可惜阿！
+                            </p><a href="" class="article">ARTICLE</a>
+                            <a href="" class="demo">DEMO</a>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <div class="pic">
+                            <img src="https://picsum.photos/600/400?random=17" alt="" />
+                        </div>
+                        <div class="txt"></div>
+                        <h1>Overlay Effect Menu</h1>
+                        <p>In this tutorial we are going to create a simple menu that will stand out once we hover over it by covering everything except the menu with a dark overlay. The menu will stay white and a submenu area will expand. We will create
+                            this effect using jQuery.</p>
+                        <a href="" class="article">ARTICLE</a>
+                        <a href="" class="demo">DEMO</a>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="pic text-center mt-3">
+                        <img src="img/book/story.jpg" alt="" />
+                    </div>
+                    <div class="txt">
+                        <h1 class="text-center pb-2">What's Your Story ?</h1>
+                    </div>
+
+                </div>
+                <div class="page">
+                    <div class="txt">
+                        <h1>Pull Out Content Panel</h1>
+                        <p class="ml3">四年時光如白駒過隙，這四年記載了你們的青春， 還記得這四年，最開心，最黑暗、最輝煌、最後悔...是哪些時後、哪些事情嗎? 把它們記下 把它們寫下 這些都是你獨一無二的人生經歷。 世上沒有後悔藥，但是你可以把後悔留在這， 青春不留遺憾，但是你可以把遺憾留在這， 因為是第一次過的人生，可能不熟練。 所以，稍微犯點錯誤也是可以的 可以讓我記住你，也可以默默的來去， 留下 寫下 放下 然後 來~ 笑一下 永遠記得這四年的傻勁、衝勁 這些都是你的獨家記憶
+
+                        </p>
+                        <!-- 文字填寫區 cols寬度(字元數)、rows高度(列數)、name後端程式處理變數值、Wrap="Virtual":輸入文字超過長度會自動換行；送出之資料，只有在按 Enter 鍵處換行。 -->
+                        <textArea cols="45" rows="5" name="寫下想寫的吧" Wrap="Virtual" class="mt-3 "> </textArea>
+                    </div>
+
+
+
+
+                </div>
+                <div class="page">
+                    <div class="pic text-center mt-3"><img src="img/book/何芮愛你.jpg" /></div>
+
+
+
+                </div>
+                <div class="page">
+                    <div class="txt">
+                        <h1>何芮愛你</h1>
+                        <p>In this tutorial we are going to create an extraordinary gallery with scrollable thumbnails that slide out from a navigation. We are going to use jQuery and some CSS3 properties for the style. The main idea is to have a menu of
+                            albums where each item will reveal a horizontal bar with thumbnails when clicked.</p>
+                    </div>
+
+
+                </div>
+                <div class="page">
+                    <div class="txt">
+                        <h1></h1>
+                        <p>闔上書本 你已經離開宜蘭大學了
+                            <br> 說聲再見，我們下次見
+                        </p>
+                    </div>
+
+
+                </div>
+                <div class="page">
+                    <div class="txt">
+                        <h1></h1>
+                        <p>其實，這本書闔不上啦 ^^</p>
+                        <br>因為你們的故事還在續寫 LOVE U GUYs
+                    </div>
+
+
+                </div>
+                <div class="page">
+                    <div class="pic">
+                        <img src="img/book/family.jpg" class="h-100" alt="" />
+                    </div>
+                    <div class="txt">
+                        <h1></h1>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var $mybook = $('#mybook');
+        var $bttn_next = $('#next_page_button');
+        var $bttn_prev = $('#prev_page_button');
+        var $loading = $('#loading');
+        var $mybook_images = $mybook.find('img');
+        var cnt_images = $mybook_images.length;
+        var loaded = 0;
+        $mybook_images.each(function() {
+            var $img = $(this);
+            var source = $img.attr('src');
+            $('<img/>').load(function() {
+                ++loaded;
+                if (loaded == cnt_images) {
+                    $loading.hide();
+                    $bttn_next.show();
+                    $bttn_prev.show();
+                    $mybook.show().booklet({
+                        name: null,
+                        // name of the booklet to display in the document title bar
+                        width: 750,
+                        // container width780
+                        height: 478,
+                        // container height
+                        speed: 600,
+                        // speed of the transition between pages
+                        direction: 'LTR',
+                        // direction of the overall content 
+                        // organization, default LTR, left to right, can be 
+                        // RTL for languages which read right to left
+                        startingPage: 0,
+                        // index of the first page to be displayed
+                        easing: 'easeInOutQuad',
+                        // easing method for complete transition
+                        easeIn: 'easeInQuad',
+                        // easing method for first half of transition
+                        easeOut: 'easeOutQuad',
+                        // easing method for second half of transition
+
+                        closed: true,
+                        // start with the book "closed", will add empty 
+                        // pages to beginning and end of book
+                        closedFrontTitle: null,
+                        // used with "closed", "menu" and "pageSelector", 
+                        // determines title of blank starting page
+                        closedFrontChapter: null,
+                        // used with "closed", "menu" and "chapterSelector", 
+                        // determines chapter name of blank starting page
+                        closedBackTitle: null,
+                        // used with "closed", "menu" and "pageSelector", 
+                        // determines chapter name of blank ending page
+                        closedBackChapter: null,
+                        // used with "closed", "menu" and "chapterSelector", 
+                        // determines chapter name of blank ending page
+                        covers: false,
+                        // used with  "closed", makes first and last pages 
+                        //into covers, without page numbers (if enabled)
+                        pagePadding: 0,
+                        // padding for each page wrapper
+                        pageNumbers: true,
+                        // display page numbers on each page
+
+                        hovers: false,
+                        // enables preview pageturn hover animation, 
+                        // shows a small preview of previous or next page on hover
+                        overlays: false,
+                        // enables navigation using a page sized overlay, 
+                        // when enabled links inside the content will 
+                        // not be clickable
+                        tabs: false,
+                        // adds tabs along the top of the pages
+                        tabWidth: 60,
+                        // set the width of the tabs
+                        tabHeight: 20,
+                        // set the height of the tabs
+                        arrows: false,
+                        // adds arrows overlayed over the book edges
+                        cursor: 'pointer',
+                        // cursor css setting for side bar areas
+
+                        hash: false,
+                        // enables navigation using a hash string, 
+                        // ex: #/page/1 for page 1, will affect 
+                        // all booklets with 'hash' enabled
+                        keyboard: true,
+                        // enables navigation with arrow keys 
+                        // (left: previous, right: next)
+                        next: $bttn_next,
+                        // selector for element to use as click 
+                        // trigger for next page
+                        prev: $bttn_prev,
+                        // selector for element to use as click 
+                        // trigger for previous page
+
+                        menu: null,
+                        // selector for element to use as the menu area, 
+                        // required for 'pageSelector'
+                        pageSelector: false,
+                        // enables navigation with a dropdown menu of pages, 
+                        // requires 'menu'
+                        chapterSelector: false,
+                        // enables navigation with a dropdown menu of chapters, 
+                        // determined by the "rel" attribute, requires 'menu'
+
+                        shadows: true,
+                        // display shadows on page animations
+                        shadowTopFwdWidth: 130,
+                        // shadow width for top forward anim
+                        shadowTopBackWidth: 150,
+                        // shadow width for top back anim
+                        shadowBtmWidth: 50,
+                        // shadow width for bottom shadow
+
+                        before: function() {},
+                        // callback invoked before each page turn animation
+                        after: function() {}
+                            // callback invoked after each page turn animation
+                    });
+                }
+            }).attr('src', source);
+        });
+    </script>
+    <script>
+        // 文字動畫
+        let textWrapper = document.querySelector('.ml3');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        let textarea = document.querySelector("textarea");
+
+        anime.timeline({
+                loop: true
+            })
+            .add({
+                targets: '.ml3 .letter',
+                opacity: [0, 1],
+                easing: "easeInOutQuad",
+                duration: 2000,
+                delay: (el, i) => 100 * (i + 1)
+            }).add({
+                targets: '.ml3',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+    </script>
+</body>
+
+</html>

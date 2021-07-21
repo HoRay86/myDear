@@ -1,0 +1,16 @@
+.body {
+    font-family: "fantasy";
+    background: linear-gradient(180deg, rgba(252, 252, 235, 0.678), rgba(255, 240, 193, 0.562));
+}
+
+li {
+    @include list
+}
+
+.navbar-nav a {
+    @include navbar_a
+}
+
+.navbar-nav a:hover {
+    @include navbar_aHover
+}

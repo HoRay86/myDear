@@ -1,0 +1,312 @@
+.timeL {
+    background-color: #fffef5;
+    .timeLineTitle {
+        margin: 30PX 0;
+        .container {
+            background-color: white;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 10PX 10PX 20PX #8a8982;
+            position: relative;
+            overflow: hidden;
+            h1 {
+                width: 96%;
+                font-size: 140PX;
+                font-weight: bolder;
+                box-sizing: border-box;
+                color: rgba(221, 221, 221, 0.55);
+                position: absolute;
+                line-height: 1.3em;
+                top: -60PX;
+                bottom: 0;
+            }
+            h1::first-letter {
+                font-size: 120PX;
+                color: rgba(221, 221, 221, 0.8);
+            }
+            .txt {
+                width: 55%;
+                column-count: 2;
+                column-gap: 20PX;
+                box-sizing: border-box;
+                padding: 30PX;
+                position: relative;
+                z-index: 1;
+            }
+            p {
+                margin-bottom: 0.6em;
+            }
+            p::first-letter {
+                font-size: 30PX;
+                float: left;
+                padding-right: 6PX;
+            }
+            p:last-child:first-letter {
+                font-size: 1em;
+                float: left;
+                padding-right: 0PX;
+            }
+            p:last-child {
+                float: right;
+                font-size: 12PX;
+                display: none;
+            }
+        }
+    }
+    /* 時間軸 圖文區  */
+    .time::after {
+        content: "";
+        width: 100%;
+        height: 100PX;
+        clear: both;
+        display: block;
+    }
+    /* 圖 + 文 */
+    .timeLine {
+        li {
+            width: 50%;
+            text-decoration: none;
+            box-sizing: border-box;
+            padding: 15PX 0;
+            position: relative;
+            margin: 50PX 0;
+            .timeItem {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100%;
+                text-decoration: none;
+                /* border:#aaa solid 3PX; */
+                border-radius: 5PX;
+                box-sizing: border-box;
+                box-shadow: 4PX 5PX 12PX rgb(83, 83, 83);
+                padding: 15PX;
+                background-color: whitesmoke;
+                color: #555;
+                text-align: center;
+            }
+            .timeItem:hover img {
+                filter: none;
+            }
+        }
+        li:nth-child(odd) {
+            float: left;
+            padding-right: 100PX;
+        }
+        li:nth-child(even) {
+            float: right;
+            padding-left: 100PX;
+            /* Y軸下移自己高度的50% */
+            transform: translateY(50%);
+        }
+        .pic {
+            margin-bottom: 5PX;
+            img {
+                filter: sepia(40%);
+                transition: 0.3s;
+                max-height: 350PX;
+                object-fit: cover;
+            }
+        }
+        h3,
+        p {
+            margin: 0 30PX;
+        }
+        /* 時間軸中間線條 */
+        li:nth-child(odd)::after {
+            content: "";
+            width: 1PX;
+            position: absolute;
+            top: 0;
+            height: 200%;
+            background-color: black;
+            right: 0;
+            z-index: -1;
+        }
+        /* 中間圓點 */
+        li::before {
+            content: "";
+            position: absolute;
+            width: 15PX;
+            height: 15PX;
+            border-radius: 50%;
+            background-color: #aaa;
+            z-index: 2;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        li:nth-child(odd)::before {
+            right: -7PX;
+        }
+        li:nth-child(even)::before {
+            left: -7PX;
+        }
+        /* 連接線 */
+        h3::after {
+            content: "";
+            width: 100PX;
+            height: 2PX;
+            position: absolute;
+            background-color: #aaa;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        li:nth-child(odd) h3::after {
+            right: 0;
+        }
+        li:nth-child(even) h3::after {
+            left: 0;
+        }
+    }
+    // today
+    .today {
+        text-align: center;
+        width: 50%;
+        margin: 50PX auto 100PX;
+        cursor: default;
+        h3 {
+            font-size: 60PX;
+            font-weight: 700;
+            letter-spacing: 6PX;
+        }
+        .pic {
+            clear: both;
+            padding-top: 100PX;
+            max-width: 320PX;
+            img {
+                border: #aaa solid 3PX;
+                border-radius: 5PX;
+                box-sizing: border-box;
+                box-shadow: 4PX 5PX 12PX rgb(83, 83, 83);
+                padding: 15PX;
+                background-color: whitesmoke;
+            }
+        }
+    }
+    // future
+    .future {
+        text-align: center;
+        .ml11 {
+            font-weight: 700;
+            font-size: 3.5em;
+            .text-wrapper {
+                position: relative;
+                display: inline-block;
+                padding-top: 0.1em;
+                padding-right: 0.05em;
+                padding-bottom: 0.15em;
+                cursor: help;
+            }
+            .line {
+                opacity: 0;
+                position: absolute;
+                left: 0;
+                height: 100%;
+                width: 3px;
+                background-color: #fff;
+                transform-origin: 0 50%;
+            }
+            .line1 {
+                top: 0;
+                left: 0;
+            }
+            .letter {
+                display: inline-block;
+                line-height: 1em;
+            }
+        }
+    }
+    /* 回頂部 */
+    .backTop {
+        float: right;
+        background-color: rgb(80, 1, 1);
+        border-radius: 50%;
+        height: 50PX;
+        width: 50PX;
+        text-align: center;
+        line-height: 50PX;
+        display: block;
+        margin-right: 50PX;
+        margin-bottom: 25PX;
+        color: darkgray;
+        text-decoration: none;
+    }
+    .backTop:hover {
+        color: darkgray;
+    }
+    @media (max-width:1024PX) {
+        .timeLineTitle .container h1 {
+            width: 98%;
+            font-size: 120PX;
+            line-height: 1.72em;
+            color: rgba(221, 221, 221, 0.65);
+        }
+    }
+    @media (max-width:768PX) {
+        .timeLineTitle .container {
+            .txt {
+                width: 85%;
+                column-count: 1;
+                box-sizing: border-box;
+                padding: 30PX;
+                position: relative;
+                z-index: 1;
+            }
+            p:nth-child(2) {
+                display: none;
+            }
+            p:last-child {
+                display: block;
+            }
+            h1 {
+                width: 98%;
+                font-size: 90PX;
+                line-height: 1.8em;
+                color: rgba(221, 221, 221, 0.65);
+            }
+            h1::first-letter {
+                font-size: 120PX;
+                color: rgba(221, 221, 221, 0.8);
+            }
+        }
+        .timeLine {
+            p {
+                display: none;
+            }
+            .pic img {
+                height: 100%;
+            }
+            li {
+                margin: 35PX 0;
+                .timeItem {
+                    padding: 0PX;
+                    border-radius: 0;
+                }
+            }
+            li:nth-child(odd) {
+                padding-right: 30PX;
+            }
+            li:nth-child(even) {
+                padding-left: 30PX;
+            }
+            h3::after {
+                width: 30PX;
+            }
+        }
+        .time::after {
+            height: 0PX;
+        }
+        .today {
+            .pic {
+                padding-top: 50PX;
+            }
+            h3 {
+                font-size: 35PX;
+                font-weight: 700;
+                letter-spacing: 6PX;
+            }
+        }
+    }
+}
